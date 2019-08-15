@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'Intro', loadChildren: './intro/intro.module#IntroPageModule' },
+  { path: 'NovoCadastro', loadChildren: './novo-cadastro/novo-cadastro.module#NovoCadastroPageModule' },
+  { path: 'CadastroSenha', loadChildren: './cadastro-senha/cadastro-senha.module#CadastroSenhaPageModule' },
+  { path: 'AtualizarCadastro', loadChildren: './atualizar-cadastro/atualizar-cadastro.module#AtualizarCadastroPageModule' },
+  { path: 'FazerLogin', loadChildren: './fazer-login/fazer-login.module#FazerLoginPageModule' },
+  { path: 'Perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
+  { path: 'Settings', loadChildren: './settings/settings.module#SettingsPageModule' },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,155 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nova Ficha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row class="login-form">
+    <ion-col>
+      <div class="pins">
+	<ion-card class="pin">
+	  <div>
+            <ion-item>
+              <ion-label>
+		<ion-icon  *ngIf="!signUpForm.controls.nome_completo.valid &&
+				  signUpForm.controls.nome_completo.dirty; else normalIcon"
+			   name="warning" color="danger"></ion-icon>
+		<ng-template #normalIcon> <ion-icon  name="person"></ion-icon>
+		</ng-template>
+	      </ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input maxlength="40"
+			   (keypress)="onKeyUp($event)"
+			   formControlName="nome_completo" placeholder="nome completo"
+			   type="text"></ion-input>
+
+	      </form>
+            </ion-item>
+	    <div *ngIf="!signUpForm.controls.nome_completo.valid &&
+			signUpForm.controls.nome_completo.dirty"
+		 class="validator-error">
+	      <font color="red" style="font-size: 0.9em;">
+		Use letras e espaços somente.
+		</font>
+	    </div>	      
+            <ion-item>
+	      <ion-label>nascimento</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input maxlength="10" type="text" placeholder="dd-mm-aaaa"
+			   formControlName="data_nasc">
+		</ion-input>
+	      </form>
+	    </ion-item>
+	    
+            <!--ion-item>
+	      <ion-label><ion-icon name="contact"></ion-icon></ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input  maxlength="30" formControlName="rg_identidade" placeholder="identidade (RG)" type="text">
+		</ion-input>
+	      </form>
+            </ion-item-->
+	    
+            <ion-item>
+              <ion-label>cpf</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input maxlength="14" type="text" placeholder="ddd.ddd.ddd-dd" formControlName="cpf">
+		</ion-input>
+	      </form>
+            </ion-item>
+
+	    <ion-item>
+	      <ion-label>sexo</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-select formControlName="sexo" interface="popover" placeholder="Sexo">
+		  <ion-select-option value="m" selected="sexo === 'm'">Masculino</ion-select-option>
+		  <ion-select-option value="f" selected="sexo === 'f'">Feminino</ion-select-option>
+		</ion-select>
+	      </form>
+	    </ion-item>
+
+            <ion-item>
+              <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input maxlength="40" formControlName="email" placeholder="email" type="text"></ion-input>
+	      </form>
+            </ion-item>
+	    
+	    <ion-item>
+	      <ion-label><ion-icon name="pin"></ion-icon></ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input maxlength="30"  formControlName="cidade" placeholder="cidade onde reside" type="text">
+		</ion-input>
+	      </form>
+	    </ion-item>
+	    
+	  </div>
+	</ion-card>
+
+	<ion-card class="pin">
+	  <div>
+	    <ion-item>
+              <ion-label>celular</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-input maxlength="13"  formControlName="telefone" placeholder="dd-ddddd-dddd" type="text"></ion-input>
+	      </form>
+            </ion-item>
+	    
+	    <ion-item>
+	      <ion-label>escola pública</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-select  formControlName="escola_publica" interface="popover" placeholder="Escolha uma opção">
+		  <ion-select-option value="nao" selected={true}>Nunca</ion-select-option>
+		  <ion-select-option value="fun">Fundamental</ion-select-option>
+		  <ion-select-option value="med">Médio</ion-select-option>
+		  <ion-select-option value="sim">Sempre</ion-select-option>
+		</ion-select>
+	      </form>
+	    </ion-item>
+	    
+	    <ion-item>
+	      <ion-label>renda familiar</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-select  formControlName="renda" interface="popover">
+		  <ion-select-option value="acima" selected={true}>Acima limite</ion-select-option>
+		  <ion-select-option value="abaixo">Abaixo limite</ion-select-option>
+		</ion-select>
+	      </form>
+	    </ion-item>
+	    
+	    <ion-item>
+	      <ion-label>deficiência</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-select  formControlName="deficiencia" interface="popover" placeholder="Escolha uma opção">
+		  <ion-select-option value="nao" selected={true}>Não</ion-select-option>
+		  <ion-select-option value="cad">Cadeirante</ion-select-option>
+		  <ion-select-option value="vis">Visual</ion-select-option>
+		  <ion-select-option value="aud">Auditiva</ion-select-option>
+		  <ion-select-option value="out">Outra</ion-select-option>
+		</ion-select>
+	      </form>
+	    </ion-item>
+
+	    <ion-item>
+	      <ion-label>cotista</ion-label>
+	      <form [formGroup]="signUpForm">
+		<ion-select formControlName="cotista" interface="popover" placeholder="Escolha uma opção">
+		  <ion-select-option value="nao" selected={true}>Não</ion-select-option>
+		  <ion-select-option value="pre">Preto</ion-select-option>
+		  <ion-select-option value="par">Pardo</ion-select-option>
+		  <ion-select-option value="ind">Indígena</ion-select-option>
+		</ion-select>
+		</form>
+	    </ion-item>
+	  </div>
+	</ion-card>
+	<div align="center">
+	  <ion-button  shape="round" fill="solid" [disabled]="!signUpForm.touched" (click)="doSaveWithAlert()">Finalizar</ion-button>
+	  <ion-button  shape="round" fill="solid" (click)="doInfo()">Info</ion-button>
+	  <ion-button  shape="round" fill="solid" (click)="doCancel()">Retorna</ion-button>
+	</div>
+      </div>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>
