@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'FazerLogin', loadChildren: './fazer-login/fazer-login.module#FazerLoginPageModule' },
   { path: 'Perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
   { path: 'Settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+  { path: 'pagamento', loadChildren: './pagamento/pagamento.module#PagamentoPageModule' },
 ];
 
 @NgModule({

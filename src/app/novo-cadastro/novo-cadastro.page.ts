@@ -251,6 +251,11 @@ export class NovoCadastroPage implements OnInit {
             "renda familiar abaixo de 1,5 salários mínimos. " +
             "Maiores detalhes no Edital de Seleção.");
     }
+    
+    doPagamento() {
+        console.log("Vamos pagar...");
+        this.navCtrl.navigateForward('/pagamento');
+    }
 
     doSaveWithAlert() {
         this.alertLiability("Revise seus Dados",
