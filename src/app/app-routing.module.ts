@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'Perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
   { path: 'Settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'pagamento', loadChildren: './pagamento/pagamento.module#PagamentoPageModule' },
+  { path: 'info-gru', loadChildren: './info-gru/info-gru.module#InfoGruPageModule' },
+  { path: 'info-isencao', loadChildren: './info-isencao/info-isencao.module#InfoIsencaoPageModule' },
 ];
 
 @NgModule({

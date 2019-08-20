@@ -4,13 +4,11 @@ import { PersonService } from '../services/person.service';
 import { Person }        from '../interfaces/person';
 
 @Component({
-  selector: 'app-pagamento',
-  templateUrl: './pagamento.page.html',
-  styleUrls: ['./pagamento.page.scss'],
+  selector: 'app-info-gru',
+  templateUrl: './info-gru.page.html',
+  styleUrls: ['./info-gru.page.scss'],
 })
-
-export class PagamentoPage implements OnInit {
-
+export class InfoGruPage implements OnInit {
     private localPerson: Person;
     // Is it a brand new insert or editing existing person ??
     private isInsert: boolean;
@@ -22,18 +20,7 @@ export class PagamentoPage implements OnInit {
         this.isInsert               = true;
     }
 
-    doIsencao(): void {
-        console.log("Info de Isenção...");
-        this.navCtrl.navigateForward('/info-isencao');
-    }
-
-    doInfoGuia(): void {
-        console.log("Info para pagar...");
-        this.navCtrl.navigateForward('/info-gru');
-    }
-
-    doCancel(): void {
-        this.personService.resetLocalPerson();
+    doRetorna(): void {
         this.navCtrl.back();
     }
 
@@ -49,5 +36,4 @@ export class PagamentoPage implements OnInit {
 	}
 	
     }
-
 }
