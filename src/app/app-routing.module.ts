@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'pagamento', loadChildren: './pagamento/pagamento.module#PagamentoPageModule' },
   { path: 'info-gru', loadChildren: './info-gru/info-gru.module#InfoGruPageModule' },
   { path: 'info-isencao', loadChildren: './info-isencao/info-isencao.module#InfoIsencaoPageModule' },
+  { path: 'gru-fields', loadChildren: './gru-fields/gru-fields.module#GruFieldsPageModule' },
 ];
 
 @NgModule({
