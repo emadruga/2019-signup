@@ -15,6 +15,8 @@ const routes: Routes = [
   { path: 'info-gru', loadChildren: './info-gru/info-gru.module#InfoGruPageModule' },
   { path: 'info-isencao', loadChildren: './info-isencao/info-isencao.module#InfoIsencaoPageModule' },
   { path: 'gru-fields', loadChildren: './gru-fields/gru-fields.module#GruFieldsPageModule' },
+  { path: 'opcao-cotas', loadChildren: './opcao-cotas/opcao-cotas.module#OpcaoCotasPageModule' },
+  { path: 'quero-cotas', loadChildren: './quero-cotas/quero-cotas.module#QueroCotasPageModule' },
 ];
 
 @NgModule({

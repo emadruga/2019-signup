@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Eu Quero Cotas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="login-form">
+    <ion-col>
+      <div class="pins">
+	<ion-card class="pin">
+	  <div>
+	    <ion-item>
+	      <ion-label>renda familiar</ion-label>
+	      <ion-select  formControlName="renda" interface="popover">
+		<ion-select-option value="acima" selected={true}>Acima limite</ion-select-option>
+		<ion-select-option value="abaixo">Abaixo limite</ion-select-option>
+	      </ion-select>
+	    </ion-item>
+	    
+	    <ion-item>
+	      <ion-label>cotista</ion-label>
+	      <ion-select formControlName="cotista" interface="popover" placeholder="Escolha uma opção">
+		<ion-select-option value="nao" selected={true}>Não</ion-select-option>
+		<ion-select-option value="pre">Preto</ion-select-option>
+		<ion-select-option value="par">Pardo</ion-select-option>
+		<ion-select-option value="ind">Indígena</ion-select-option>
+	      </ion-select>
+	    </ion-item>
+	  </div>
+	</ion-card>
+	<div align="center">
+	  <ion-button  shape="round" fill="solid" (click)="doPagamento()">Pagamento</ion-button>
+	  <ion-button  shape="round" fill="solid" (click)="doCancel()">Retorna</ion-button>
+	</div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

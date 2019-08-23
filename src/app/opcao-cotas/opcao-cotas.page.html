@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Opção por Cotas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-row>
+                <ion-col col-2></ion-col>
+                <ion-col col-8>
+                    <img src="assets/img/inmetro-logo-2.png" style="min-width: 150px; max-width: 250px"/>
+                </ion-col>
+                <ion-col col-2></ion-col>
+            </ion-row>
+            <h3>Curso Técnico em Segurança Cibernética </h3>
+        </ion-card-header>
+        <ion-card-content>
+	  <p>
+            Baseado na legislação atual, o curso reserva uma cota de
+            50% das vagas para candidatos que tenham estudado
+            <strong> integralmente </strong> em escola pública (bolsas
+            de estudo de origem pública para escolas privadas não
+            enquadram-se neste caso).
+          </p>	  
+	  <br/>
+          <p>	  
+	    Para os candidatos enquadrados,
+            existem 3 grupos diferentes de cotas:
+          </p>	  
+	  <ul>
+ 	    <li>
+	      Pretos, pardos ou indígenas (PPI);
+ 	    </li>
+ 	    <li>
+	      Com renda familiar menor que 1,5 salário mínimo;
+	    </li>
+	    <li>
+	      Com formação integral em escolas públicas, mas que não se
+	      encaixam nas categorias acima.
+	    </li>
+	  </ul>
+	  <p>
+	    Para os candidatos aprovados e selecionados, no momento da
+	    matrícula será necessária a comprovação do enquadramento
+	    acima, caso o candidato opte pelo sistema de cotas.
+	  </p>
+	  <br/>
+	  <p>
+	    Se o candidato deseja  <strong>optar pelas cotas </strong> dos grupos acima,
+	    escolha o botão <strong>Quero Cotas</strong>. Caso contrário, escolha o
+	    botão  <strong>Não Quero Cotas </strong>.
+	  </p>
+        </ion-card-content>
+    </ion-card>
+    <div align="center">
+        <ion-button (click)="doNaoQueroCotas()"  shape="round" fill="solid">Não Quero Cotas</ion-button>
+        <ion-button (click)="doQueroCotas()" shape="round" fill="solid">Quero Cotas</ion-button>
+	<ion-button (click)="doCancel()"   shape="round" fill="solid">Retorna</ion-button>
+    </div>
+</ion-content>

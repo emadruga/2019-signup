@@ -257,6 +257,74 @@ export class NovoCadastroPage implements OnInit {
         this.navCtrl.navigateForward('/pagamento');
     }
 
+    doCotas() {
+        console.log("Configurando opção por cotas...");
+
+	
+	/*---------------
+        if (!this.nome_completo.valid) {
+            this.alertProblemaFormato("Nome Completo",
+				      "Usar até 40 letras no nome e " +
+				      "sobrenome, separados por espaço." );
+            return;
+        }
+
+        if (!this.data_nasc.valid ||
+            !DataNascValidator.isValidDate(this.data_nasc.value)) {
+            this.alertProblemaFormato("Data de Nascimento",
+				      "Informar dia, mês e ano no formato " +
+				      "'dd-mm-aaaa'. Ex: 28-02-1996 e 31-12-2008." );
+            return;
+        }
+        if (!this.cpf.valid) {
+            this.alertProblemaFormato("Informação de CPF",
+				      "Usar dígitos e separadores '.' e '-'. " +
+				      "Ex: 123.456.789-00" );
+            return;
+        }
+
+        if (!cpf.isValid(this.cpf.value)) {
+            this.alertProblemaFormato("Informação de CPF",
+				      "Não válido. Digitos corretos?" );
+            return;
+        }
+
+        if (!this.email.valid) {
+            this.alertProblemaFormato("Informação de Email",
+				      "Informar seu email no formato correto. " +
+				      "Ex: marcela@gmail.com, " +
+				      "leonardo97@uol.com.br" );
+            return;
+        }
+        if (!this.telefone.valid) {
+            this.alertProblemaFormato("Informação de Celular",
+				      "Informar seu celular para contato com " +
+				      "o código de área " +
+				      "separado por '- '. Ex: 21-99999-1234" );
+            return;
+        }
+	---------------------------*/
+	
+	let personData : Person = {
+            nome_completo: this.nome_completo.value.trim(),
+            data_nasc:     this.data_nasc.value,
+            rg_identidade: this.rg_identidade.value,
+            cpf:	   this.cpf.value,
+            sexo:	   this.sexo.value,
+            email:	   this.email.value,
+            cidade:	   this.cidade.value,
+            cep:	   this.cep.value,
+            telefone:	   this.telefone.value,
+            deficiencia:   this.deficiencia.value,
+            escola_publica:   this.escola_publica.value,
+            cotista:       this.cotista.value,
+            renda:       this.renda.value
+        };
+
+	this.personService.persistPersonLocally(personData)
+	this.navCtrl.navigateForward('/opcao-cotas');
+    }
+    
     doSaveWithAlert() {
         this.alertLiability("Revise seus Dados",
             "Nos termos do Edital de Seleção, informações incorretas " +
