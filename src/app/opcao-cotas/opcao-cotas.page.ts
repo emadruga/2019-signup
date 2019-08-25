@@ -82,7 +82,7 @@ export class OpcaoCotasPage implements OnInit {
 
     doQueroCotas(): void {
         console.log("Info para cotas...");
-        //this.navCtrl.navigateForward('/info-gru');
+        this.navCtrl.navigateForward('/quero-cotas');
     }
 
     doCancel(): void {

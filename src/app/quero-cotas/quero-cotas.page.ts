@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PersonService } from '../services/person.service';
 import { Person }        from '../interfaces/person';
 
@@ -15,6 +15,7 @@ export class QueroCotasPage implements OnInit {
     private localPerson  : Person;
     private cotista      : FormControl;
     private renda        : FormControl;
+    public  opcoesForm   : FormGroup;
 
     // Is it a brand new insert or editing existing person ??
     private isInsert: boolean;
@@ -30,6 +31,10 @@ export class QueroCotasPage implements OnInit {
         this.cotista       = this.formBuilder.control('', Validators.required);
         this.renda         = this.formBuilder.control('', Validators.required);
 	
+	this.opcoesForm    = this.formBuilder.group({
+            cotista   : this.cotista,
+            renda     : this.renda
+        });
     }
 
     ngOnInit() {
@@ -44,6 +49,7 @@ export class QueroCotasPage implements OnInit {
     }
     doPagamento() {
         console.log("Vamos pagar...");
+	this.personService.updateOpcoesCotas(this.cotista, this.renda)	
         this.navCtrl.navigateForward('/pagamento');
     }
 
