@@ -49,7 +49,7 @@ export class QueroCotasPage implements OnInit {
     }
     doPagamento() {
         console.log("Vamos pagar...");
-	this.personService.updateOpcoesCotas(this.cotista, this.renda)	
+	this.personService.updateOpcoesCotas(this.cotista.value, this.renda.value)	
         this.navCtrl.navigateForward('/pagamento');
     }
 

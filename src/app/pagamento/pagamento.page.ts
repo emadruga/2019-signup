@@ -33,7 +33,7 @@ export class PagamentoPage implements OnInit {
     }
 
     doCancel(): void {
-        this.personService.resetLocalPerson();
+        //this.personService.resetLocalPerson();
         this.navCtrl.back();
     }
 

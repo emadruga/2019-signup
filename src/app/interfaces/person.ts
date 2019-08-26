@@ -9,10 +9,10 @@ export interface Person {
     cidade              : string;
     cep                 : string;
     telefone            : string;
-    escola_publica      : string;
     deficiencia         : string;
-    cotista             : string;
-    renda               : string;
+    escola_publica?     : string;
+    cotista?            : string;
+    renda?               : string;
     txt_escola_publica?  : string;
     txt_deficiencia?     : string;
     txt_cotista?         : string;
