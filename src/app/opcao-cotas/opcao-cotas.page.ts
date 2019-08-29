@@ -24,7 +24,17 @@ export class OpcaoCotasPage implements OnInit {
     
     doNaoQueroCotas(): void {
         console.log("Ampla concorrência...");
-        this.navCtrl.navigateForward('/pagamento');
+        if (this.localPerson !== undefined) {
+	    let cotista = 'nao';
+	    // in this case, we do not care about ppi and renda
+	    // just filling in some consistent info.
+	    let ppi     = 'nao';
+	    let renda   = 'acima';
+	    this.personService.updateOpcoesCotas(cotista,ppi,renda);
+	} else {
+	    console.log('opcao-cotas: person not defined!')
+	}
+	this.navCtrl.navigateForward('/pagamento');
     }
 
     doQueroCotas(): void {

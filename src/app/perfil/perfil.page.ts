@@ -19,11 +19,14 @@ export class PerfilPage implements OnInit {
                 private alertCtrl: AlertController,
                 private modalCtrl: ModalController,
                 private navCtrl: NavController) {
-        this.pessoa = this.personServ.getLocalPerson();
     }
 
     doEdit() {
         this.navCtrl.navigateForward('/NovoCadastro');
+    }
+
+    doGuia() {
+        this.navCtrl.navigateForward('/info-gru');
     }
 
     doExit() {
@@ -43,16 +46,15 @@ export class PerfilPage implements OnInit {
     }
 
     doInfo() {
-        this.alertInfo("Ficha de Inscrição",
-            "Imprima a ficha no seu computador, e leve a impressão no dia da prova. " +
-            "Logo após, feche o navegador por segurança. " +
-            "Se preferir, use os últimos 4 (quatro) dígitos de seu CPF para acessar a " +
-            "ficha de inscrição e imprimir mais tarde.  " +
-            "Pode também acessar a ficha no seu celular, e apresentá-la no dia da prova." +
-            "Maiores detalhes no Edital de Seleção.");
+        this.alertInfo("Entregar Comprovante",
+            "É necessário entregar o comprovante pessoalmente na " +
+            "Secretaria do Cicma, Prédio 32, no Campus do Inmetro, " +
+            "em Xerém. Observe a data-limite." +
+            "Endereço e datas na página do curso.");
     }
 
     ngOnInit() {
+        this.pessoa = this.personServ.getLocalPerson();
         console.log(this.pessoa);
     }
 

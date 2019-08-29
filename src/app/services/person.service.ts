@@ -75,27 +75,35 @@ export class PersonService {
     }
 
     updateLocalPerson(nome, email, cotista, escola, telefone) : void {
-        this.person.nome_completo = nome;
-        this.person.email                  = email;
-        this.person.cotista                = cotista;
-        this.person.escola_publica   = escola;
-        this.person.telefone              = telefone;
+
+	if (this.person !== undefined) {
+            this.person.nome_completo  = nome;
+            this.person.email          = email;
+            this.person.cotista        = cotista;
+            this.person.escola_publica = escola;
+            this.person.telefone       = telefone;
+	}
     }
     
     updateInfo(nome, dnasc, cpf, sexo, email, cidade, celular, defic) : void {
-        this.person.nome_completo             = nome;
-        this.person.data_nasc                 = dnasc;
-        this.person.cpf                       = cpf;
-        this.person.sexo                      = sexo;
-        this.person.email                     = email;
-        this.person.cidade                    = cidade;
-        this.person.telefone                  = celular;
-        this.person.deficiencia               = defic;
+	if (this.person !== undefined) {
+            this.person.nome_completo             = nome;
+            this.person.data_nasc                 = dnasc;
+            this.person.cpf                       = cpf;
+            this.person.sexo                      = sexo;
+            this.person.email                     = email;
+            this.person.cidade                    = cidade;
+            this.person.telefone                  = celular;
+            this.person.deficiencia               = defic;
+	}
     }
     
-    updateOpcoesCotas(cotista, renda) : void {
-        this.person.cotista                   = cotista;
-        this.person.renda                     = renda;
+    updateOpcoesCotas(cotista, ppi, renda) : void {
+	if (this.person !== undefined) {
+            this.person.cotista                   = cotista;
+            this.person.ppi                       = ppi;
+            this.person.renda                     = renda;
+	}
     }
     
     doCaptcha() : Observable<any> {

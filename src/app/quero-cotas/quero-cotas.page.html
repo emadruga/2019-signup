@@ -13,7 +13,7 @@
 		<ion-item>
 		  <ion-label>renda familiar</ion-label>
 		  <form [formGroup]="opcoesForm">
-		    <ion-select  formControlName="renda" interface="popover">
+		    <ion-select  formControlName="renda" interface="popover" placeholder="abaixo/acima">
 		      <ion-select-option value="acima" selected={true}>
 			Acima limite
 		      </ion-select-option>
@@ -25,9 +25,9 @@
 		</ion-item>
 		
 		<ion-item>
-		  <ion-label>cotista</ion-label>
+		  <ion-label>PPI</ion-label>
 		  <form [formGroup]="opcoesForm">
-		    <ion-select formControlName="cotista" interface="popover" placeholder="Escolha uma opção">
+		    <ion-select formControlName="ppi" interface="popover" placeholder="não/preto/pardo/indígena">
 		      <ion-select-option value="nao" selected={true}>Não</ion-select-option>
 		      <ion-select-option value="pre">Preto</ion-select-option>
 		      <ion-select-option value="par">Pardo</ion-select-option>

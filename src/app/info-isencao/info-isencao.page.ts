@@ -76,6 +76,8 @@ export class InfoIsencaoPage implements OnInit {
         if (this.localPerson !== undefined) {
 
 	    // atualiza localPerson com this.pagamento = "isencao pendente"
+	    this.localPerson.modo_pagam   = 'isencao';
+	    this.localPerson.doc_entregue = 'nao';
 
 	    console.log("Sending info to database...");
 	    console.log(this.localPerson);

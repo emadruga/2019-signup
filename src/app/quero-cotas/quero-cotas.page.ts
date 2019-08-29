@@ -13,7 +13,7 @@ import { Person }        from '../interfaces/person';
 export class QueroCotasPage implements OnInit {
 
     private localPerson  : Person;
-    private cotista      : FormControl;
+    private ppi          : FormControl;
     private renda        : FormControl;
     public  opcoesForm   : FormGroup;
 
@@ -28,11 +28,11 @@ export class QueroCotasPage implements OnInit {
 
         this.localPerson            = undefined;
 
-        this.cotista       = this.formBuilder.control('', Validators.required);
-        this.renda         = this.formBuilder.control('', Validators.required);
+        this.ppi    = this.formBuilder.control('', Validators.required);
+        this.renda  = this.formBuilder.control('', Validators.required);
 	
 	this.opcoesForm    = this.formBuilder.group({
-            cotista   : this.cotista,
+            ppi       : this.ppi,
             renda     : this.renda
         });
     }
@@ -43,13 +43,23 @@ export class QueroCotasPage implements OnInit {
 
         if (this.localPerson !== undefined) {
             this.isInsert = false;
+            this.ppi    .setValue(this.localPerson. ppi );
+            this.renda  .setValue(this.localPerson. renda );
         } else {
             this.isInsert = true;
  	}
     }
+    
     doPagamento() {
         console.log("Vamos pagar...");
-	this.personService.updateOpcoesCotas(this.cotista.value, this.renda.value)	
+	if (this.localPerson !== undefined) {
+	    let cotista = 'sim';
+	    let ppi     = this.ppi.value;
+	    let renda   = this.renda.value;
+	    this.personService.updateOpcoesCotas(cotista,ppi,renda);
+	} else {
+	    console.log('quero-cotas: person not defined!')
+	}
         this.navCtrl.navigateForward('/pagamento');
     }
 

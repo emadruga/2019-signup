@@ -9,7 +9,7 @@ import { Person }        from '../interfaces/person';
   styleUrls: ['./info-gru.page.scss'],
 })
 export class InfoGruPage implements OnInit {
-    private localPerson: Person;
+    private pessoa: Person;
     // Is it a brand new insert or editing existing person ??
     private isInsert: boolean;
 
@@ -17,19 +17,19 @@ export class InfoGruPage implements OnInit {
 		private alertCtrl: AlertController,
 		private navCtrl: NavController) {
 	
-	this.localPerson            = undefined;
+	this.pessoa            = undefined;
         this.isInsert               = true;
     }
 
     doRetorna(): void {
         //this.navCtrl.back();
-	this.navCtrl.navigateBack('/NovoCadastro');
+	this.navCtrl.navigateBack('/Perfil');
     }
 
 
     ngOnInit() {
-	this.localPerson = this.personService.getLocalPerson();
-        if (this.localPerson !== undefined) {
+	this.pessoa = this.personService.getLocalPerson();
+        if (this.pessoa !== undefined) {
 
             // The page is going to be used to modify existing person
             // rather than add a new person.
@@ -40,67 +40,4 @@ export class InfoGruPage implements OnInit {
 	
     }
 
-    async alertInsertOk(msg: string) {
-        const alert = await this.alertCtrl.create({
-            header: 'Sucesso',
-            subHeader: 'Cadastro realizado',
-            message: msg,
-            buttons: ['OK']
-        });
-
-        await alert.present();
-    }
-    
-    async alertServerFailure(msg: string) {
-        const alert = await this.alertCtrl.create({
-            header: 'Problema',
-            subHeader: 'Serviço indisponível',
-            message: msg,
-            buttons: ['OK']
-        });
-
-        await alert.present();
-    }
-
-    async alertConflict(msg: string) {
-        const alert = await this.alertCtrl.create({
-            header: 'Conflito',
-            subHeader: 'CPF já existente',
-            message: msg,
-            buttons: ['OK']
-        });
-
-        await alert.present();
-    }
-
-    doFinaliza(): void {
-        if (this.localPerson !== undefined) {
-
-	    // atualiza localPerson com this.pagamento = "pendente"
-	    console.log("Sending info to database...");
-	    console.log(this.localPerson);
-	
-            this.personService.saveApplicant(this.localPerson)
-                .subscribe(
-                    (person: Person) => {
-                        console.log("Id recebido: " + person._id);
-                        this.alertInsertOk("Informações salvas!");
-                        this.personService.persistPersonLocally(person);
-                        this.navCtrl.navigateRoot('/Perfil');
-                    },
-                    (err) => {
-                        console.log(err);
-                        if (err.status == 409) {
-                            this.alertConflict("Por favor, verifique dados fornecidos.");
-                        } else {
-                            this.alertServerFailure("Por favor, tente mais tarde!");
-                        }
-                    }
-                );
-
-	} else {
-	    console.log("info-gru: no user to save...");
-	}
-    }    
-    
 }

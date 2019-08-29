@@ -35,10 +35,13 @@
 		<ion-col>Código de Recolhimento</ion-col> <ion-col>28883-7</ion-col>
 	      </ion-row>
 	      <ion-row>
-		<ion-col>CPF</ion-col> <ion-col>(CPF do candidato)</ion-col>
+		<ion-col>Número de Referência</ion-col> <ion-col>{{pessoa.rg_identidade}}</ion-col>
 	      </ion-row>
 	      <ion-row>
-		<ion-col>Nome do Contribuinte</ion-col> <ion-col>(Nome completo do candidato)</ion-col>
+		<ion-col>CPF</ion-col> <ion-col>{{pessoa.cpf}}</ion-col>
+	      </ion-row>
+	      <ion-row>
+		<ion-col>Nome do Contribuinte</ion-col> <ion-col>{{pessoa.nome_completo}}</ion-col>
 	      </ion-row>
 	      <ion-row>
 		<ion-col>Vencimento</ion-col> <ion-col>27/09/2019</ion-col>
@@ -87,7 +90,6 @@
         </ion-card-content>
     </ion-card>
     <div align="center">
-	<ion-button (click)="doFinaliza()"  shape="round" fill="solid">Finaliza</ion-button>
 	<ion-button (click)="doRetorna()"   shape="round" fill="solid">Retorna</ion-button>
     </div>
 
