@@ -46,10 +46,20 @@ export class PerfilPage implements OnInit {
     }
 
     doInfo() {
+	var comprov = "Comprovante de Pagamento";
+	var link = "http://consulta.tesouro.fazenda.gov.br/GRU_NOVOSITE/GRU_SIMPLES.ASP";
+
+	if (this.pessoa.modo_pagam !== "gru") {
+	    
+	    comprov = "Comprovante de Cadastramento (CadÚnico)";
+	    link = "https://aplicacoes.mds.gov.br/sagi/consulta_cidadao/index.php";
+	}
+	var txt  = '<a href="' + link + '" target="_blank">' + comprov + '</a>';
+	
         this.alertInfo("Entregar Comprovante",
-            "É necessário entregar o comprovante pessoalmente na " +
+            "É necessário entregar o " + txt + " pessoalmente na " +
             "Secretaria do Cicma, Prédio 32, no Campus do Inmetro, " +
-            "em Xerém. Observe a data-limite." +
+            "em Xerém. Observe a data-limite. " +
             "Endereço e datas na página do curso.");
     }
 
