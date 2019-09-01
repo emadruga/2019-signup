@@ -13,10 +13,11 @@
 
   <ion-card>
     <ion-card-header>
-     <h3> Informações</h3>
+     <h3>Atualização de Informações</h3>
     </ion-card-header>
     <ion-card-content>
-      <p>O <strong>Curso Técnico em Segurança Cibernética</strong>, baseado na legislação atual, oferece vagas para candidatos que estudaram em escolas públicas. Para tal, o candidato se aprovado precisará comprovar ter estudado todo o ensino fundamental e médio em escola pública. Modifique agora suas informações para refletir sua situação em caso de aprovação.</p>
+      <p>Mantenha seu cadastro atualizado para que possamos entrar em
+      contato, caso necessário.</p>
     </ion-card-content>
   </ion-card>
 
@@ -56,45 +57,12 @@
 	      </form>
             </ion-item>
 	    <ion-item>
-              <ion-label>Celular</ion-label>
+              <!--ion-label><ion-icon name="call"></ion-icon></ion-label-->
+              <ion-label><ion-icon name="phone-portrait"></ion-icon></ion-label>
 	      <form [formGroup]="signUpForm">
 		<ion-input maxlength="13"  formControlName="telefone" placeholder="dd-ddddd-dddd" type="text"></ion-input>
 	      </form>
             </ion-item>
-	    <ion-item>
-	      <ion-label>Escola pública?</ion-label>
-	      <form [formGroup]="signUpForm">
-		<ion-select  formControlName="escola_publica" interface="popover" placeholder="Escolha uma opção">
-		  <ion-select-option value="nao" selected={true}>Nunca</ion-select-option>
-		  <ion-select-option value="fun">Fundamental</ion-select-option>
-		  <ion-select-option value="med">Médio</ion-select-option>
-		  <ion-select-option value="sim">Sempre</ion-select-option>
-		</ion-select>
-	      </form>
-	    </ion-item>
-	    
-	    <!--ion-item>
-	      <ion-label>Renda Familiar</ion-label>
-	      <form [formGroup]="signUpForm">
-		<ion-select  formControlName="renda_familiar" interface="popover">
-		  <ion-select-option value="acima" selected={true}>Acima de 1,5 salários mínimos</ion-select-option>
-		  <ion-select-option value="abaixo">Abaixo ou igual</ion-select-option>
-		</ion-select>
-	      </form>
-	    </ion-item-->
-	    
-	    
-	    <ion-item>
-	      <ion-label>cotista</ion-label>
-	      <form [formGroup]="signUpForm">
-		<ion-select formControlName="cotista" interface="popover" placeholder="Escolha uma opção">
-		  <ion-select-option value="nao" selected={true}>Não</ion-select-option>
-		  <ion-select-option value="pre">Preto</ion-select-option>
-		  <ion-select-option value="par">Pardo</ion-select-option>
-		  <ion-select-option value="ind">Indígena</ion-select-option>
-		</ion-select>
-	      </form>
-	    </ion-item>
 	  </div>
 	</ion-card>
 	<div align="center">

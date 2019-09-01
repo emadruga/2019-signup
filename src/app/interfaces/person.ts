@@ -19,4 +19,6 @@ export interface Person {
     txt_escola_publica?  : string;
     txt_deficiencia?     : string;
     txt_cotista?         : string;
+    txt_modo_pagam?      : string;
+    txt_rg_identidade?   : string;
 }

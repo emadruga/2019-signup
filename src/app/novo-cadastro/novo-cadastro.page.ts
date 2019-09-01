@@ -187,7 +187,7 @@ export class NovoCadastroPage implements OnInit {
                     }
                 },
                 {
-                    text: 'Salvar',
+                    text: 'Próximo',
                     handler: () => {
                         this.doCotas();
                     }

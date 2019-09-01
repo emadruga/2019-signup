@@ -7,6 +7,7 @@ import { environment, SERVER_URL } from '../../environments/environment';
 @Injectable({
     providedIn: 'root'
 })
+
 export class PersonService {
 
     private person: Person;
@@ -54,15 +55,23 @@ export class PersonService {
             }
         }
 
-        if (typeof this.person.escola_publica === 'undefined') {
-            this.person.txt_escola_publica = 'Não';
+        if (typeof this.person.modo_pagam === 'undefined') {
+            this.person.txt_modo_pagam = 'Guia';
         } else {
             // it is defined indeed
-            if (this.person.escola_publica === "nao") {
-                this.person.txt_escola_publica = 'Não';
+            if (this.person.modo_pagam === "isencao") {
+                this.person.txt_modo_pagam = 'Isenção';
             } else {
-                this.person.txt_escola_publica = 'Sim';
+                this.person.txt_modo_pagam = 'Guia';
             }
+        }
+	
+        if (typeof this.person.rg_identidade === 'undefined') {
+            this.person.txt_rg_identidade = '';
+        } else {
+            // it is defined indeed
+            this.person.txt_rg_identidade =
+		this.person.rg_identidade.replace(/\-/g, '');
         }
     }
 
@@ -74,13 +83,15 @@ export class PersonService {
         this.person = undefined;
     }
 
-    updateLocalPerson(nome, email, cotista, escola, telefone) : void {
+    weHavePerson() : boolean {
+        return (this.person !== undefined);
+    }
+
+    updateLocalPerson(nome, email, telefone) : void {
 
 	if (this.person !== undefined) {
             this.person.nome_completo  = nome;
             this.person.email          = email;
-            this.person.cotista        = cotista;
-            this.person.escola_publica = escola;
             this.person.telefone       = telefone;
 	}
     }

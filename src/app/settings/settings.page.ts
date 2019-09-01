@@ -15,12 +15,9 @@ export class SettingsPage {
 
     private localPerson: Person;
 
-    private nome_completo: FormControl;
-    private data_nasc         : FormControl;
-    private email                 : FormControl;
-    private telefone             : FormControl;
-    private escola_publica  : FormControl;
-    private cotista               : FormControl;
+    private nome_completo : FormControl;
+    private email         : FormControl;
+    private telefone      : FormControl;
 
     private accented_regex = '^[a-zA-Z \u00C0-\u017F]+$';
     public  signUpForm       : FormGroup;
@@ -42,15 +39,11 @@ export class SettingsPage {
         ]));
         this.email         = this.formBuilder.control('', Validators.required);
         this.telefone       = this.formBuilder.control('', Validators.required);
-        this.escola_publica         = this.formBuilder.control('', Validators.required);
-        this.cotista       = this.formBuilder.control('', Validators.required);
 
         if (this.localPerson !== null) {
             this.nome_completo .setValue(this.localPerson. nome_completo );
             this.email                  .setValue(this.localPerson. email         );
-            this.cotista                .setValue(this.localPerson. cotista       );
             this.telefone              .setValue(this.localPerson. telefone        );
-            this.escola_publica   .setValue(this.localPerson. escola_publica   );
         } else {
             console.log("Erro: tentativa de editar  registro vazio!");
             this.close();
@@ -59,9 +52,7 @@ export class SettingsPage {
         this.signUpForm    = this.formBuilder.group({
             nome_completo: this.nome_completo,
             email                     : this.email,
-            cotista                   : this.cotista,
             telefone                 : this.telefone,
-            escola_publica      : this.escola_publica
         });
     }
 
@@ -112,8 +103,6 @@ export class SettingsPage {
         this.personService.updateLocalPerson(
             this.nome_completo.value.trim(),
             this.email.value.trim(),
-            this.cotista.value,
-            this.escola_publica.value,
             this.telefone.value
         );
 
