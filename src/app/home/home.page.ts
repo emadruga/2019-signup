@@ -55,6 +55,7 @@ export class HomePage implements OnInit {
     getUserCaptcha() {
         if (this.captchaUserAnswer === this.captchaTxt) {
             this.captchaIsGood = true;
+	    this.personService.setUserLoggedIn();
             console.log('captcha ok!');
         } else {
             console.log('captcha wrong!');

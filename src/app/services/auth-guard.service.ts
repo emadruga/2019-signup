@@ -17,7 +17,7 @@ export class AuthGuardService {
 
         console.log(route);
 	
-	if (!this.personService.weHavePerson()) {
+	if (!this.personService.isUserLoggedIn()) {
             this.router.navigate(['home']);
             return false;
         }

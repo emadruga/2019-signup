@@ -11,6 +11,7 @@ import { environment, SERVER_URL } from '../../environments/environment';
 export class PersonService {
 
     private person: Person;
+    private loggedIn: boolean;
 
     constructor(private http: HttpClient) {
 
@@ -29,6 +30,18 @@ export class PersonService {
             {
                 headers: hdrs,
             });
+    }
+
+    setUserLoggedIn() : void {
+        this.loggedIn = true;
+    }
+
+    setUserLoggedOut() : void {
+        this.loggedIn = false;
+    }
+
+    isUserLoggedIn() : boolean {
+        return (this.loggedIn === true);
     }
 
     persistPersonLocally(p: Person) {

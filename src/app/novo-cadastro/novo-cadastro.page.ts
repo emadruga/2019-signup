@@ -102,7 +102,7 @@ export class NovoCadastroPage implements OnInit {
     ngOnInit() {
 
         this.localPerson = this.personService.getLocalPerson();
-
+	
         if (this.localPerson !== undefined) {
 
             // The page is going to be used to modify existing person

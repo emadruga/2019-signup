@@ -31,6 +31,7 @@ export class PerfilPage implements OnInit {
 
     doExit() {
         this.personServ.resetLocalPerson();
+	this.personServ.setUserLoggedOut();
         this.navCtrl.navigateForward('/home');
     }
 
