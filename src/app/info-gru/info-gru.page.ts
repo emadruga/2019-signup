@@ -9,7 +9,7 @@ import { Person }        from '../interfaces/person';
   styleUrls: ['./info-gru.page.scss'],
 })
 export class InfoGruPage implements OnInit {
-    private pessoa: Person;
+    public pessoa: Person;
     // Is it a brand new insert or editing existing person ??
     private isInsert: boolean;
 
