@@ -50,12 +50,25 @@ A) Install vagrant:
 B) Configure vagrant networking for web access from host:
 https://stackoverflow.com/questions/33129651/access-web-server-on-virtualbox-vagrant-machine-from-host-browser
 
-1. Open the vagrant file (should be in the directory where you specified to create a new vagrant machine).
-2. Search for config.vm.network. If you didn't setup the file earlier, it should be commented.
-3. Change it to look something like this config.vm.network "private_network", ip: "55.55.55.5". Here ip address (55.55.55.5) can be any ip address you want.
-4. Now logout from the vagrant machine and reload your vagrant machine by this command vagrant reload.
-5. Again ssh to your vagrant machine and restart your django server by this command python manage.py runserver 0.0.0.0:80. Again the port address (80) can be 8000 if you want so.
-6. After that, in your browser, enter the following address 55.55.55.5, and hopefully you should see your webapp.
+1. Open the vagrant file (should be in the directory where you
+specified to create a new vagrant machine).
+
+2. Search for config.vm.network. If you didn't setup the file earlier,
+it should be commented out.
+
+3. Change it to look something like this config.vm.network
+"private_network", ip: "55.55.55.5". Here ip address (55.55.55.5) can
+be any ip address you want.
+
+4. Now logout from the vagrant machine and reload your vagrant machine
+using this command: $ vagrant reload.
+
+5. Again ssh into your vagrant machine and restart your server by
+this command python manage.py runserver 0.0.0.0:80. Again the port
+address (80) can be 8000 if you want so.
+
+6. After that, in your browser, enter the following address
+http://55.55.55.5, and hopefully you should see your webapp.
 
 
 C) Install Node.js with NVM (tutorial guide Digital Ocean):
