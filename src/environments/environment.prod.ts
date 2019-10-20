@@ -3,6 +3,6 @@ export const environment = {
     message: 'ok'
 };
 //export const SERVER_URL   =  'https://shielded-temple-91138.herokuapp.com';
-export const SERVER_URL =  'http://cibernetica.inmetro.gov.br';
+export const SERVER_URL =  'https://cibernetica.inmetro.gov.br';
 
-export const SECRET_KEY   = "6LcpS3QUAAAAADdcTpZnBHxD3-3i-OhOzsszl7f2";
+export const SECRET_KEY   = "w8YhJBaBOOkHCNBh8glsoNmACsKDmFWI";
