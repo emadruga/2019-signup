@@ -175,6 +175,81 @@ $ pm2 cleardump
 
 Note:  pm2 Cheat sheet: http://pm2.keymetrics.io/docs/usage/quick-start/
 
+24) Installing SSL - Part1
+Get certificates from CTINF: inmetro.crt and inmetro.key
+(both are signed by DigiCert, Inc.)
+
+25) SSL - Part 2
+Reconfig Nginx:
+https://bjornjohansen.no/securing-nginx-ssl
+https://bjornjohansen.no/redirect-to-https-with-nginx
+https://www.digicert.com/csr-ssl-installation/nginx-openssl.htm
+
+a) In /etc/nginx/sites-enabled/default:
+
+server {
+
+        server_name cibernetica.inmetro.gov.br;
+        listen 443 ssl http2;
+        ssl_certificate /etc/ssl/inmetro.crt;
+        ssl_certificate_key /etc/ssl/private/inmetro.key;
+
+        location / {
+                proxy_pass http://127.0.0.1:5000;
+        }
+
+        location /api {
+                proxy_pass http://127.0.0.1:8080;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header Host $host;
+                proxy_set_header x-real-ip $remote_addr;
+                proxy_set_header x-forwarded-for $remote_addr;
+                proxy_connect_timeout   1000;
+                proxy_send_timeout      1500;
+                proxy_read_timeout      2000;
+        }
+
+        location /db {
+                proxy_pass http://127.0.0.1:1234/db;
+        }
+}
+
+# Redirect all HTTP traffic to HTTPS
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name cibernetica.inmetro.gov.br;
+        return 301 https://$server_name$request_uri;
+}
+
+b) restart nginx:
+$ sudo service nginx reload
+
+26) SSL - Part 3
+Reconfig web app 
+
+- Change src/environments/environment.prod.ts to HTTPS:
+export const SERVER_URL =  'https://cibernetica.inmetro.gov.br';
+
+- Rebuild code and restart
+$ ionic build --prod
+$ pm2 restart Webapp
+
+
+27) SSL - Part 4
+Reconfig rest api
+
+- In SignupRestAPI.js, change to HTTPS the scheme used by 
+cibernetica in CORS white list:
+
+var whitelist = ['https://stark-caverns-59860.herokuapp.com',
+                 'http://localhost:8100',
+                 'https://cibernetica.inmetro.gov.br']
+
+- Restart REST API server:
+$ pm2 restart restAPI 
 
 DEVELOP environment
 ===================
