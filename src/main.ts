@@ -9,7 +9,7 @@ if (environment.production) {
 }
 
 // disable console log
-//console.log = function(){};
+console.log = function(){};
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
