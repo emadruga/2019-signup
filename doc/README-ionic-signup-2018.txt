@@ -9,27 +9,171 @@ TODO:
 PROD environment
 ================
 
-1) On ionic/angular web app side:
+1) git clone http://github.com/emadruga/2019-signup
+
+2) git clone http://github.com/emadruga/2019-restapi
+
+3) Certificar das versões necessárias para webapp (ambiente desenvolv):
+
+[emadruga@webapp]$ ionic info
+
+Ionic:
+
+   ionic (Ionic CLI)             : 4.12.0 (/Users/emadruga/.nvm/versions/node/v10.16.0/lib/node_modules/ionic)
+   Ionic Framework               : @ionic/angular 4.7.1
+   @angular-devkit/build-angular : 0.801.3
+   @angular-devkit/schematics    : 8.1.3
+   @angular/cli                  : 8.1.3
+   @ionic/angular-toolkit        : 2.0.0
+
+Capacitor:
+
+   capacitor (Capacitor CLI) : 1.1.1
+   @capacitor/core           : 1.1.1
+
+System:
+
+   NodeJS : v10.16.0 (/Users/emadruga/.nvm/versions/node/v10.16.0/bin/node)
+   npm    : 6.9.0
+   OS     : macOS Mojave
+
+4) nvm ls-remote
+5) nvm install v10.16.0
+6) cd 2019-selecao/2019-signup
+7) nvm use v10.16.0
+8) npm install -g ionic@4.12.0
+9) npm install (instala angular e todas as outras dependencias)
+10) ionic info (versoes estão batendo?)
+
+11) SECRET_KEY: from randomkeygen.com, pick a 'CodeIgniter Encryption key'
+12) Update src/environments/environment.prod.ts with SECRET_KEY chosen.
+
+    export const SERVER_URL =  'http://cibernetica.inmetro.gov.br';
+    export const SECRET_KEY   = "<chosen-key-here>";
+    
+13) Update .bashrc with the very same chosen key.
+    export SECRET_KEY="<chosen-key-here>"
+
+14) source ~/.bashrc
+
+15) Clean up mongodb, and check user permissions.
+
+$ mongo -u "mongoadmin"
+Enter password:
+---
+> show users
+{
+	"_id" : "test.emadruga",
+	"user" : "emadruga",
+	"db" : "test",
+	"roles" : [
+		{
+			"role" : "readWrite",
+			"db" : "hotels"
+		},
+		{
+			"role" : "readWrite",
+			"db" : "test"
+		}
+	],
+	"mechanisms" : [
+		"SCRAM-SHA-1",
+		"SCRAM-SHA-256"
+	]
+}
+
+> use hotels
+>
+16) save current contents of mongodb:
+
+$ mongoexport -h localhost:27017 -d hotels -c rooms -u mongoadmin  --out bkup.json
+2019-10-17T15:57:47.453+0000	connected to: localhost:27017
+2019-10-17T15:57:47.822+0000	exported 1086 records
+
+
+17) keep the database, but wipe out its contents:
+$ mongo -u "mongoadmin"
+Enter password:
+---
+> use hotels
+> db.dropDatabase()
+{ "dropped" : "hotels", "ok" : 1 }
+> db.stats()
+{
+	"db" : "hotels",
+	"collections" : 0,
+	"views" : 0,
+	"objects" : 0,
+	"avgObjSize" : 0,
+	"dataSize" : 0,
+	"storageSize" : 0,
+	"numExtents" : 0,
+	"indexes" : 0,
+	"indexSize" : 0,
+	"fileSize" : 0,
+	"fsUsedSize" : 0,
+	"fsTotalSize" : 0,
+	"ok" : 1
+}
+>
+
+18) Clone code from github.
+
+$ mkdir ~/2019-signup
+$ cd 2019-signup
+$ git clone github.com/emadruga/2019-signup
+$ git clone github.com/emadruga/2019-restapi
+
+19) Config the restAPI:
+
+$ cd ./2019-restapi
+$ npm install     (install  express, mongoose, etc.)
+$ node SignupRestAPI.js
+
+19) Config the web interface:
+
+$ cd ~/2019-signup/2019-signup
 
 In main.ts:
 // disable console log
 console.log = function(){};
 
-1.5) Install pm2:
 
+In environments/environment.prod.ts
+// update SECRET_KEY
+
+$ ionic build --prod
+
+
+21) Install http-server and pm2:
+
+$ npm install http-server
+
+$ npm uninstall pm2
 $ npm install pm2@latest -g
+$ pm2 update (to replace old code in memory)  
 
-2) Start processes with pm2:
+22) Start processes with pm2:
+
+$ cd ~/2019-signup/2019-restapi
 $ pm2 start SignupRestAPI.js --name "Rest API" --log-date-format="YYYY-MM-DD HH:mm Z"
-$ pm2 start server.js --name "Website" --log-date-format="YYYY-MM-DD HH:mm Z"
+
+# https://stackoverflow.com/questions/31804966/running-nodejs-http-server-forever-with-pm2
+$ cd ~/2019-signup/2019-signup/www
+$ pm2 start --name Webapp \\
+    /home/cicma/.nvm/versions/node/v10.16.0/bin/http-server  -- -p 5000 \\
+   --log-date-format="YYYY-MM-DD HH:mm Z"
+
+$ cd 
+pm2 start app.js --name "AdminMongo" --log-date-format="YYYY-MM-DD HH:mm Z"
 $ pm2 save
 
-3) To remove a process:
+23) To remove a process:
 $ pm2 stop 3
 $ pm2 delete 3
 $ pm2 cleardump 
 
-3) pm2 Cheat sheet: http://pm2.keymetrics.io/docs/usage/quick-start/
+Note:  pm2 Cheat sheet: http://pm2.keymetrics.io/docs/usage/quick-start/
 
 
 DEVELOP environment
