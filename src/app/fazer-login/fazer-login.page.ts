@@ -32,6 +32,25 @@ export class FazerLoginPage implements OnInit {
 
         await alert.present();
     }
+    
+    async alertInfo(msg1, msg2: string) {
+        const alert = await this.alertCtrl.create({
+            header: 'Informação',
+            subHeader: msg1,
+            message: msg2,
+            buttons: ['OK']
+        });
+
+        await alert.present();
+    }
+
+    doInfo() {
+        this.alertInfo("Atualização e Consulta",
+            "É necessário informar e-mail e a senha. " +
+            "Os 4 últimos digitos do CPF em cadastro constituem a senha. " +
+            "Exemplo: para um CPF igual a 123.456.789-10, " +
+            "a senha seria 8910.");	
+    }
 
     login() {
 

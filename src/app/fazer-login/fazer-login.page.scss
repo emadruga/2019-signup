@@ -58,7 +58,7 @@ ion-content {
   }
 
   .login-button {
-    width: 50%;
+    width: 30%;
     border-radius: 30px !important;
     padding-left: 10px !important;
     margin-bottom: 10px;
@@ -67,20 +67,15 @@ ion-content {
     background-color: transparent;
     //border: 1px solid #fff;
   }
-
-  .captcha-button {
-    width: 30px;
-    padding-right: 10px !important;
-    //border-radius: 30px;
+ .info-button {
+    width: 30%;
+    border-radius: 30px !important;
+    padding-left: 10px !important;
+    margin-bottom: 10px;
     font-size: 0.9em;
-    border: 1px solid #fff;
-    //background-color: #39acdc;
-  }
-
-  .svg {
-    max-width: 128px;
-    //padding-right: 0px !important;
-    //padding-left: 0px !important;
+    color: #fff;
+    background-color: transparent;
+    //border: 1px solid #fff;
   }
 
 }
