@@ -33,13 +33,13 @@
 	      "Guia".
 	  </li>
 	  <li> Para solicitar a isenção da taxa de inscrição, clique
-	      no botão "Isenção".
+	      no botão "Isenção" <strong>(período de isenção expirado)</strong>
 	  </li>
 	  </ul>
         </ion-card-content>
     </ion-card>
     <div align="center">
-        <ion-button (click)="doIsencao()"  shape="round" fill="solid">Isenção</ion-button>
+        <ion-button [disabled]="true" (click)="doIsencao()" shape="round" fill="solid">Isenção</ion-button>
         <ion-button (click)="doInfoGuia()" shape="round" fill="solid">Guia</ion-button>
 	<ion-button (click)="doCancel()"   shape="round" fill="solid">Retorna</ion-button>
     </div>
