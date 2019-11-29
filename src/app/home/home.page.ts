@@ -42,6 +42,11 @@ export class HomePage implements OnInit {
         await alert.present();
     }
 
+    signupClosed(){
+        console.log('Captcha Error!');
+        this.alertCaptchaFailure('Período de nova inscrição encerrado.')
+    }
+
     doForm() {
         console.log("Vamos criar nova ficha de pré-inscrição");
         this.navCtrl.navigateForward('/NovoCadastro');
